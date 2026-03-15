@@ -1,5 +1,5 @@
 import { httpResource } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Product } from './product';
 
 @Injectable({
@@ -11,4 +11,6 @@ export class ProductService {
   productsResource = httpResource<Product[]>(() => this.productsUrl, {
     defaultValue: [],
   });
+
+  selectedProduct = signal<Product | undefined>(undefined); //sharing signals in a service to share them
 }
